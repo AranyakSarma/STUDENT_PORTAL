@@ -44,7 +44,7 @@ The Student Information Portal is a Python-based console application designed to
 ### 4. Logging In as Teacher
 ![Successful login as a teacher](screenshots/logging in as teacher.png)
 
-### 5. Viewing Student Marks and Records (Corrected Path)
+### 5. Viewing Student Marks and Records
 ![View of student marks and record, including invalid input recognition](screenshots/viewing student marks and record, includes example of invalid input recognition.png)
 
 ### 6. Adding Message for Student
