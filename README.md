@@ -31,18 +31,33 @@ The Student Information Portal is a Python-based console application designed to
 - Try invalid inputs to test error handling and validation.
 
 ## Screenshots
-<img width="660" height="206" alt="login page" src="https://github.com/user-attachments/assets/f7a31a46-b192-42dd-abbc-8c8ee5bfb205" />
-<img width="763" height="397" alt="logging in as management" src="https://github.com/user-attachments/assets/0909c004-6700-4637-aae9-f690cffb9ad1" />
-<img width="732" height="332" alt="logging out returns you to the login page" src="https://github.com/user-attachments/assets/7514f5a3-c6da-46c7-bc63-1064c4ecd455" />
-<img width="958" height="492" alt="logging in as teacher" src="https://github.com/user-attachments/assets/1a6f9ee0-688d-4cd8-ac60-ff4f1fbbcfc8" />
-<img width="808" height="512" alt="viewing student marks and record, includes example of invalid input recognition" src="https://github.com/user-attachments/assets/0a126a16-596d-4512-8167-c22fb49a3fc2" />
-<img width="608" height="297" alt="adding message for student" src="https://github.com/user-attachments/assets/3d807bbe-cc4f-45ba-87d1-b9eebbe4551f" />
-<img width="722" height="253" alt="viewing message as student" src="https://github.com/user-attachments/assets/70768d69-8143-4b68-a90a-459019afcaed" />
-<img width="677" height="267" alt="viewing messages as parent" src="https://github.com/user-attachments/assets/31af9285-6d9e-4e99-912d-f9170afe6cc2" />
-<img width="667" height="232" alt="exiting portal" src="https://github.com/user-attachments/assets/68b42b60-cc63-48fd-b5e0-eb283eb481c4" />
 
+### 1. Login Page
+![Student Portal Login Page](screenshots/login page.png)
 
+### 2. Logging In as Management
+![Successful login as management](screenshots/logging in as management.png)
 
+### 3. Logging Out
+![Logout returns to the login page](screenshots/logging out returns you to the login page.png)
+
+### 4. Logging In as Teacher
+![Successful login as a teacher](screenshots/logging in as teacher.png)
+
+### 5. Viewing Student Marks and Records
+![View of student marks and record, including invalid input example](screenshots/viewing student marks and record, includes example of invalid i....png)
+
+### 6. Adding Message for Student
+![Screen for adding a new message for a student](screenshots/adding message for student.png)
+
+### 7. Viewing Message as Student
+![Student view of messages](screenshots/viewing message as student.png)
+
+### 8. Viewing Messages as Parent
+![Parent view of messages](screenshots/viewing messages as parent.png)
+
+### 9. Exiting Portal
+![Screen confirming exiting the portal](screenshots/exiting portal.png)
 
 
 
