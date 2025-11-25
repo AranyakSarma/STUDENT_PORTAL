@@ -1,4 +1,11 @@
-print ("Welcome to the Student Information Portal\n\n")
+from operator import itemgetter
+import math
+import datetime as d
+from collections import Counter
+import statistics as s
+
+print("Welcome to the student portal! Choose a login method to continue.\n")
+print("Login Time:", d.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
 l = []
 
@@ -149,7 +156,9 @@ def teacher():
         print('Press 5 to add message for students')
         print('Press 6 to view message from parents')
         print('Press 7 to view message from students')
-        print('Press 8 to logout')
+        print('Press 8 to view student rankings by marks')
+        print('Press 9 to view class statistics')
+        print('Press 10 to logout')
 
         n = input('Enter the choice: ')
 
@@ -175,6 +184,12 @@ def teacher():
             print('Viewing messages from students:\n')
             viewmsg_student()
         elif n == '8':
+            print('Viewing student rankings:\n')
+            rankings()
+        elif n == '9':
+            print('Viewing class statistics:\n')
+            statistics()
+        elif n == '10':
             print('Logging out . . . . . . .\n\n')
             break
         else:
@@ -254,18 +269,23 @@ def teacher_view():
             roll = int(input('Enter roll number to view records and marks: '))
             break
         except ValueError:
-                print ('Invalid input')
-                continue
+            print('Invalid input')
+            continue
     for n in l:
         if n[0] == roll:
-            print('Roll:',n[0])
+            print('Roll:', n[0])
             print('Name:', n[1])
             print('Age:', n[2])
             print('Branch:', n[3])
             print('Marks:')
             if n[4]:
-                for subject, marks in n[4].items():
-                    print(f'{subject}: {marks}')
+                x = list(n[4].values())
+                for sub, marks in n[4].items():
+                    print(f'{sub}: {marks}')
+                t = math.fsum(x)
+                avg = t / len(x)
+                print('Total Marks: ',t)
+                print(f'Average Marks: {avg:.2f}')
             else:
                 print('No marks entered')
             break
@@ -342,7 +362,52 @@ def viewmsg_student():
     else:
         print('Student record not found')
 
+def rankings():
+    branchno = Counter(n[3] for n in l)
+    print('Student count per branch:')
+    for branch, c in branchno.items():
+        print(branch,':',c)
+    print()
 
+    print('Student Rankings:\n')
+    r = []
+    for n in l:
+        roll = n[0]
+        name = n[1]
+        marks = n[4]
+        if marks and all(marks.values()):
+            total = sum(marks.values())
+            r.append((roll, name, total))
+    r.sort(key=itemgetter(2), reverse=True)
+    print("%-6s %-8s %-20s %-6s" % ("Rank", "Roll", "Name", "Total Marks"))
+    print("-" * 50)
+    rank = 1
+    for roll, name, total in r:
+        print('%-6s %-8s %-20s %-6s' % (rank, roll, name, total))
+        rank += 1
+    if not r:
+        print('No students with complete marks')
+
+def statistics():
+    t = []
+    for n in l:
+        m = n[4]
+        if m and all(m.values()):
+            t.append(sum(m.values()))
+    if not t:
+        print('No students with complete marks')
+        return
+    mean = s.mean(t)
+    median = s.median(t)
+    try:
+        mode = s.mode(t)
+    except s.StatisticsError:
+        mode = 'No unique mode'
+    print('\nClass Statistics :')
+    print(f'Mean (Average): {mean:.2f}')
+    print('Median: ',median)
+    print('Mode: ',mode)
+    
 def student():
     print('\n<--------------------LOGGED IN AS STUDENT-------------------->')
     while True:
@@ -396,14 +461,19 @@ def view_marks():
             roll = int(input('Enter your roll number: '))
             break
         except ValueError:
-                print ('Invalid input')
-                continue
+            print('Invalid input')
+            continue
     for n in l:
         if n[0] == roll:
             if n[4]:
                 print('Marks:')
+                x = list(n[4].values())
                 for subject, marks in n[4].items():
                     print(f'{subject}: {marks}')
+                t = math.fsum(x)
+                avg = t / len(x)
+                print(f'Total Marks: {t}')  
+                print(f'Average Marks: {avg:.2f}')
             else:
                 print('No marks found')
             break
@@ -489,13 +559,18 @@ def parentview_record():
         print('Record not found')
 
 def parentview_marks():
-    roll = input('Enter your child\'s roll number to view marks: ')
+    roll = input("Enter your child's roll number to view marks: ")
     for n in l:
-        if str(n[0])==roll:
+        if str(n[0]) == roll:
             if n[4]:
                 print('Marks:')
-                for subject, marks in n[4].items():
-                    print(f'{subject}: {marks}')
+                x = list(n[4].values())
+                for sub, marks in n[4].items():
+                    print(f'{sub}: {marks}')
+                t = math.fsum(x)
+                avg = t / len(x)
+                print('Total Marks: ',t)
+                print(f'Average Marks :[avg:.2f]')
             else:
                 print('No marks found')
             break
